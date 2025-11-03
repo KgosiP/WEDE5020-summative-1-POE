@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stifflers Apparel Gallery | Streetwear Lookbook & Style Inspiration</title>
+    <meta name="description" content="Explore the Stifflers Apparel lookbook — a visual showcase of our streetwear collections. Get inspired by our latest designs, photoshoots, and urban fashion trends.">
+    <meta name="keywords" content="Stifflers Apparel gallery, fashion lookbook, streetwear photography, outfit inspiration, modern fashion trends, visual style, urban clothing showcase">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dynapuff&family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="product.html">Products</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Gallery</h1>
+        
+     <section class="gallery">
+
+        <div class="image-container">
+            <img src="__images/posing in an all black Stiffler's fit.jpg" alt="female model" style="width:550px;height:550px;">
+            <img src="__images/clothing design 01.jpg" alt="clothing design" style="width:550px;height:550px;">
+            <img src="__images/Pop shop.jpg" alt="Image 3" style="width:550px;height:550px;">
+        </div>
+
+        <div class="image-container">
+            <img src="__images/stiffler's clothing in-store.jpg" alt="Image 4" style="width:550px;height:550px;">
+            <img src="__images/infront of graffiti wall in soccer stiffler's attire.jpg" alt="Image 5" style="width:550px;height:550px;">
+            <img src="__images/sitting infornt of gate with Stiffler's attire.jpg" alt="Image 6" style="width:550px;height:550px;">
+        </div>
+
+        <div class="image-container">
+            <img src="__images/two dudes in jorts infront of a coffee shop.jpg" alt="Image 7" style="width:550px;height:550px;">
+            <img src="__images/three guys in stiffler's attire.jpg" alt="Image 8" style="width:550px;height:550px;">
+            <img src="__images/infront of vida cafe man& women in stifflers attire.jpg" alt="image 9" style="width:550px;height:550px;">
+        </div>
+
+        <div class="image-container">
+            <img src="__images/pose 03.jpg" alt="Image 11" style="width:550px;height:550px;">
+            <img src="__images/pose 04.jpg" alt="Image 12" style="width:550px;height:550px;">
+            <img src="__images/clothing design 02.jpg" alt="Image 10" style="width:550px;height:550px;">
+        </div>
+
+        <div class="image-container">
+            <img src="__images/Kasi.jpg" alt="Image 13" style="width:550px;height:550px;">
+            <img src="__images/baggy jorts design.jfif" alt="Image 15" style="width:550px;height:550px;">
+            <img src="__images/pose 001.jfif" alt="Image 14" style="width:550px;height:550px;">
+        </div>
+
+        <div class="image-container">
+            <img src="__images/baggy jorts design 02.jfif" alt="Image 16" style="width:550px;height:550px;">
+            <img src="__images/pose 002.jfif" alt="Image 17" style="width:550px;height:550px;">
+            <img src="__images/double ended tee design.jfif" alt="Image 18" style="width:550px;height:550px;">
+
+        </div>
+     </section>
+
+
+    </main>
+
+    <footer>
+        <nav class="top-nav footer-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="product.html">Products</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <p>&copy; 2024 Stiffler's Apparel. All rights reserved.</p>
+    </footer>
+    
+ <div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="Expanded image">
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+ </div>
+
+ <script>
+  const images = document.querySelectorAll('.gallery-image');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.close');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+
+  let currentIndex = 0;
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      currentIndex = index;
+      openLightbox();
+    });
+  });
+
+  function openLightbox() {
+    lightbox.style.display = 'block';
+    lightboxImg.src = images[currentIndex].src;
+  }
+
+  function closeLightbox() {
+    lightbox.style.display = 'none';
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+  }
+
+  closeBtn.addEventListener('click', closeLightbox);
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'block') {
+      if (e.key === 'ArrowRight') showNext();
+      else if (e.key === 'ArrowLeft') showPrev();
+      else if (e.key === 'Escape') closeLightbox();
+    }
+  });
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+  });
+
+  function handleGesture() {
+    const swipeDistance = touchStartX - touchEndX;
+    if (Math.abs(swipeDistance) > 50) {
+      if (swipeDistance > 0) showNext(); 
+      else showPrev(); 
+    }
+  }
+ </script>
+
+</body>
+</html>
